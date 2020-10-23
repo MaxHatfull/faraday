@@ -16,7 +16,7 @@ module Faraday
     def call(env)
       on_request(env) if respond_to?(:on_request)
       app.call(env).on_complete do |environment|
-        on_complete(environment) if respond_to?(:on_complete)
+        on_response(environment) if respond_to?(:on_response)
       end
     end
 
